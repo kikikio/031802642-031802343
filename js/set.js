@@ -5,8 +5,8 @@ var treeNum=[];//导师节点数组
 var intarea;//文本域内容
 var Arr;//按行分割
 var Arr2;//学生名按顿号分割
-var Arr3;//技能信息存储
-var skillnum = 0 ;//技能信息行数
+var Arr3=[];//技能信息存储
+var studentnum = 0 ;//技能信息行数
 var data;
 var ssnodes;
 var searchObj;
@@ -49,73 +49,22 @@ var setting = {
     },
 };
 
-// function addZTreeNode(obj) {
-//     var newNode = obj;
-
-//     var treeObj = $.fn.zTree.getZTreeObj("regionZTree");
-//     var parentZNode = treeObj.getSelectedNodes(); //获取父节点
-//     newNode.nodeFlg = 1; // 可以自定义节点标识
-//     newNode = treeObj.addNodes(parentZNode[0], newNode, true);
-// }
-// function editZTreeNode(obj) {
-
-//     var zTree = $.fn.zTree.getzTreeObj("regionZTree");
-//     var zTree = $.fn.zTree.getZTreeObj("regionZTree");
-//     var nodes = zTree.getSelectedNodes();
-//     for (var i = 0; i < nodes.length; i++) {
-//         nodes[i].name = obj;
-//         zTree.updateNode(nodes[i]);
-//     }
-// }
-// function removeZTreeNodeBySelect() {
-//     var zTree = $.fn.zTree.getzTreeObj("regionZTree");
-//     var nodes = zTree.getSelectedNodes(); //获取选中节点
-//     for (var i = 0; i < nodes.length; i++) {
-//         zTree.removeNode(nodes[i]);
-//     }
-// }
-// function removeZTreeNodeByChecked() {
-//     var zTree = $.fn.zTree.getzTreeObj("regionZTree");
-//     var nodes = zTree.getCheckedNodes(true); //获取勾选节点
-//     for (var i = 0; i < nodes.length; i++) {
-//         zTree.removeNode(nodes[i]);
-//     }
-// }
-// function removeZTreeNodebPi(obj) {
-//     var idnodes = obj.split(",");
-//     var zTree = $.fn.zTree.getzTreeObj("regionZTree");
-//     var nodes = zTree.getSelectedNodes();
-//     for (var i = 0; i < nodes.length; i++) {
-//         var nodes = zTree.getNodeByParam("id", nodes[i]);
-//         zTree.removeNode(nodes);
-//     }
-// }
-// function selectzTreeNode(obj) {
-//     var zTree = $.fn.zTree.getzTreeObj("regionZTree");
-//     var node = zTree.getNodeByParam("id", obj);
-//     if (node != null) {
-//         zTree.selectNode(node, true); //指定选中ID的节点
-//     }
-// }
 function find(){
     var flag=0;
     var f=false;
-    var studentskills;
     for(var a=0;a<n;a++){
         searchObj=$.fn.zTree.getZTreeObj("regionZTree"+a);
         searchObj.cancelSelectedNode();//取消上一次查找所选的节点
     }
     data=$("#stxt").val();
-    for(var j = 0; j < skillnum ; j++) //根据输入的名字，查找他的技能字符串
+    var studentskills;
+    for(var j = 0; j < studentnum ; j++) //根据输入的名字，查找他的技能字符串
     {
         var studentname;
-        //var studentskills;
-        var sss=new String(Arr3[j]);
-        var k=sss.indexOf("：");
-        studentname = sss.substring(0,k);
-        //studentskills = sss.substring(k+1,sss.length);
+        var k = Arr3[j].indexOf("：");
+        var studentname=Arr3[j].substring(0,k);
         if (studentname == data){
-            studentskills = sss.substring(k+1,sss.length);
+            studentskills = Arr3[j].substring(k+1,Arr3[j].length);
             break;
         }
     }
@@ -125,11 +74,14 @@ function find(){
         searchObj.selectNode(searnodes[0]);//名字符合的节点设为选中状态
         ssnodes=searchObj.getSelectedNodes();//被选中的节点ssnodes[0]
         if(ssnodes.length>0){//有选中的节点
-            flag++;f=true;
+            flag++;
+            f=true;
             if(flag==1){//只输出一次导师
                 searchObj.selectNode(ssnodes[0]);
                 ssnodes=searchObj.getNodes();//ssnodes更新为整棵树的节点
-                $("#result").text(ssnodes[0].menuName);//ssnodes[0]此时为根节点
+                //var searchboss = console.log( ssnodes[0].menuName , searchboss);
+                console.log(studentskills)
+                $("#result").text(ssnodes[0].menuName+"\n\n"+studentskills);//ssnodes[0]此时为根节点
             }
         }
         if(!f)
@@ -182,8 +134,8 @@ function getSname(x){
         before=ss.substring(0,k);
         behind=ss.substring(k+1,ss.length);
         Arr2=behind.split("、");//学生名字
-        //Arr3[skillnum]=
-        //Arr3=before; // xx级博士生 / 硕士生  or 名字（说明本行是技能信息）
+        Arr3[studentnum]=ss;
+        studentnum ++;
 }
 
 
@@ -197,25 +149,10 @@ function secondLayer(first,last){
         {
             zTreeObj.addNodes(parentZNode[0], [{menuName:before}], true);
             zTreeObj.expandAll(true);
-        }else {  // 如果是技能信息，例如：刘六：java、数学建模,则Arr2里面是技能list，Arr3存学生名字+对应技能
-            Arr3 =  before + behind ; 
-            skillnum ++ ;
         } 
     }
     zzNodes=zTreeObj.getNodes()[0].children;
 }
-//第一版本
-// function secondLayer(){
-//     for(var ii=1;ii<Arr.length;ii++){
-//         getSname(Arr[ii]);//提取学生名进Arr2
-//         zNodes=zTreeObj.getNodes();
-//         zTreeObj.selectNode(zNodes[0]);
-//         var parentZNode=zTreeObj.getSelectedNodes(); 
-//         zTreeObj.addNodes(parentZNode[0], [{menuName:before}], true);
-//         zTreeObj.expandAll(true); 
-//     }
-//     zzNodes=zTreeObj.getNodes()[0].children;
-// }
 
 function thirdLayer(first,last){
     var iii=0;
@@ -231,29 +168,5 @@ function thirdLayer(first,last){
         iii++;
     }
 }
-//第一版本
-// function thirdLayer(){
-//     for(var ii=1;ii<Arr.length;ii++){
-//         getSname(Arr[ii]);//提取学生名进Arr2
-//         var iii=ii-1;
-//         zNodes=zTreeObj.getNodes();
-//         zTreeObj.selectNode(zzNodes[iii]);
-//         var parentZNode = zTreeObj.getSelectedNodes();
-//         for(var jj=0;jj<Arr2.length;jj++)
-//             zTreeObj.addNodes(parentZNode[0], [{menuName:Arr2[jj]}], true);
-//         zTreeObj.expandAll(true); 
-//     }
-// }
-/*
-function thirdLayer(first,last){
-    var iii=0;
-    for(var ii=first+1;ii<last;ii++){//二级数
-        getSname(Arr[ii]);//提取学生名进Arr2
-        zTreeObj.selectNode(zzNodes[iii]);
-        var parentZNode = zTreeObj.getSelectedNodes();
-        for(var jj=0;jj<Arr2.length;jj++)
-            zTreeObj.addNodes(parentZNode[0], [{menuName:Arr2[jj]}], true);
-        zTreeObj.expandAll(true); 
-        iii++;
-    }
-}*/
+
+
