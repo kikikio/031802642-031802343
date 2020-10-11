@@ -3,64 +3,50 @@
     cursor: pointer;
     border: solid 0px;
     border-radius: 7px;
-    background-color: rgba(255, 255, 255, 0.555);
+    background-color: rgba(251, 252, 253, 0.89);
 }
 .ztree li{
     margin-top: 5px;
     margin-left: 10px;
 }
 .ztree li a.curSelectedNode {
-    background-color: rgba(235, 164, 44, 0.7);
+    background-color: rgba(106, 159, 194, 0.945);
 }
 .treed{
     float: left;
-    margin-left: 1.9%;
-    margin-top: 2.3%;
+    margin-left: 5%;
+    margin-top: 6.5%;
 }
 .onetree{
     float: left;
     margin-left: 25%;
-    margin-top: 2.3%;
+    margin-top: 6.5%;
 }
 .twotree{
     float: left;
-    margin-left: 13%;
-    margin-top: 2.3%;
+    margin-left: 20%;
+    margin-top: 6.5%;
 }
 .threetree{
     float: left;
-    margin-left: 5%;
-    margin-top: 2.3%;
+    margin-left: 10%;
+    margin-top: 6.5%;
 }
 #regionZTree{
     height: 490px;
 }
 #kuang{
     position: fixed;
-    top:0px;
-    left: 2.5%;
-    width: 73.1%;
-    height: 100%;
-    opacity: 0.5;
-    border:1px solid lightgray;
-    box-shadow:5px 5px 5px rgb(148, 148, 148);
+    top:-10px;
+    left: 0%;
+    width: 100%;
+    height: 110%;
+    opacity: 1;
+    border:1px solid rgb(253, 252, 252);
+    box-shadow:5px 5px 5px rgb(156, 155, 155);
     z-index: -2;
     background:url(wenli.jpg);
     background-size: cover;
-}
-#welcome{
-    font-family: "Matura MT Script Capitals";
-    font-size: 330%;
-    margin-top: 8%;
-    margin-left: 9%;
-    color: rgb(56, 56, 56);
-}
-#tip{
-    margin-top: 3.5%;
-    margin-left: 15.5%;
-    color: rgb(56, 56, 56);
-    font-family: "方正舒体";
-    font-size: 170%;
 }
 #texts{
     padding: 20px;
@@ -81,19 +67,11 @@
     font-family: "Matura MT Script Capitals";
     font-size: 20px;
 }
-#boy{
-    opacity: 0.8;
-    width: 22%;
-    position: fixed;
-    left:58%;
-    bottom:-1%; 
-    z-index: -1;
-}
 #fdj{
     opacity: 0.8;
     width: 3.1%;
     position: fixed;
-    right:25.2%;
+    left:21%;
     top:2.5%; 
 }
 #fdj:hover{
@@ -102,8 +80,8 @@
 #search{
     position: fixed;
     top:2.5%;
-    right:29%;
-    width: 9.4%;
+    left:5%;
+    width: 15%;
     height: 10.3%;
     border-radius: 20px;
     opacity: 0.6;
@@ -125,7 +103,7 @@
     font-size: 15px;
     margin-top: 13px;
     margin-left: 10px;
-    width: 90px;
+    width: 160px;
 }
 #result{
     margin-left: 20px;
@@ -134,7 +112,7 @@
 #an{
     position: fixed;
     top:9.6%;
-    right:25.3%;
+    left:21.5%;
 }
 button{
     display: inline-block;
@@ -145,7 +123,7 @@ button{
     text-decoration: none;
     font-size: 16px;
     color:white;
-    background-color: rgb(223, 156, 50);
+    background-color: rgb(50, 119, 223);
     border-radius: 20px;
     box-shadow:3px 3px 2px rgb(179, 178, 178);
 }
