@@ -50,7 +50,6 @@ var setting = {
 };
 
 function find(){
-    var flag=0;
     var f=false;
     for(var a=0;a<n;a++){
         searchObj=$.fn.zTree.getZTreeObj("regionZTree"+a);
@@ -74,15 +73,12 @@ function find(){
         searchObj.selectNode(searnodes[0]);//名字符合的节点设为选中状态
         ssnodes=searchObj.getSelectedNodes();//被选中的节点ssnodes[0]
         if(ssnodes.length>0){//有选中的节点
-            flag++;
-            f=true;
-            if(flag==1){//只输出一次导师
-                searchObj.selectNode(ssnodes[0]);
-                ssnodes=searchObj.getNodes();//ssnodes更新为整棵树的节点
-                //var searchboss = console.log( ssnodes[0].menuName , searchboss);
-                console.log(studentskills)
-                $("#result").text(ssnodes[0].menuName+"\n\n"+studentskills);//ssnodes[0]此时为根节点
-            }
+            f = true;
+            if (typeof studentskills != "undefined") 
+                $("#result").text(studentskills);//ssnodes[0]此时为根节点
+             else {
+                 $("#result").text("他还没有技能和经历信息");
+             }
         }
         if(!f)
             $("#result").text("NONE");//没有选中的节点
@@ -92,7 +88,6 @@ function find(){
 function toLine(){
         intarea=$("#texts").val();
         Arr=intarea.split(/[(\r\n)\r\n]+/);
-      //  Arr=intarea.split("\r\n");
 }
 
 function teacherNum(){
