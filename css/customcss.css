@@ -1,0 +1,167 @@
+.ztree li a {
+    height: 18px;
+    cursor: pointer;
+    border: solid 0px;
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, 0.555);
+}
+.ztree li{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.ztree li a.curSelectedNode {
+    background-color: rgba(235, 164, 44, 0.7);
+}
+.treed{
+    float: left;
+    margin-left: 1.9%;
+    margin-top: 2.3%;
+}
+.onetree{
+    float: left;
+    margin-left: 25%;
+    margin-top: 2.3%;
+}
+.twotree{
+    float: left;
+    margin-left: 13%;
+    margin-top: 2.3%;
+}
+.threetree{
+    float: left;
+    margin-left: 5%;
+    margin-top: 2.3%;
+}
+#regionZTree{
+    height: 490px;
+}
+#kuang{
+    position: fixed;
+    top:0px;
+    left: 2.5%;
+    width: 73.1%;
+    height: 100%;
+    opacity: 0.5;
+    border:1px solid lightgray;
+    box-shadow:5px 5px 5px rgb(148, 148, 148);
+    z-index: -2;
+    background:url(wenli.jpg);
+    background-size: cover;
+}
+#welcome{
+    font-family: "Matura MT Script Capitals";
+    font-size: 330%;
+    margin-top: 8%;
+    margin-left: 9%;
+    color: rgb(56, 56, 56);
+}
+#tip{
+    margin-top: 3.5%;
+    margin-left: 15.5%;
+    color: rgb(56, 56, 56);
+    font-family: "方正舒体";
+    font-size: 170%;
+}
+#texts{
+    padding: 20px;
+    border-radius: 20px;
+    position: fixed;
+    width: 16.4%;
+    height: 72%;
+    top: 4%;
+    right: 2.5%;
+    font-size: 13px;
+}
+#butt{
+    position: fixed;
+    width: 19%;
+    height: 7%;
+    bottom: 6.5%;
+    right: 2.6%;
+    font-family: "Matura MT Script Capitals";
+    font-size: 20px;
+}
+#boy{
+    opacity: 0.8;
+    width: 22%;
+    position: fixed;
+    left:58%;
+    bottom:-1%; 
+    z-index: -1;
+}
+#fdj{
+    opacity: 0.8;
+    width: 3.1%;
+    position: fixed;
+    right:25.2%;
+    top:2.5%; 
+}
+#fdj:hover{
+    cursor: pointer;
+}
+#search{
+    position: fixed;
+    top:2.5%;
+    right:29%;
+    width: 9.4%;
+    height: 10.3%;
+    border-radius: 20px;
+    opacity: 0.6;
+    background-color: white;
+    box-shadow:2px 2px 5px rgb(148, 148, 148);
+}
+#shuaxin{
+    opacity: 0.5;
+    width: 2%;
+    position: fixed;
+    right:3.6%;
+    bottom:19%; 
+}
+#shuaxin:hover{
+    cursor: pointer;
+}
+#stxt{
+    border: none;
+    font-size: 15px;
+    margin-top: 13px;
+    margin-left: 10px;
+    width: 90px;
+}
+#result{
+    margin-left: 20px;
+    font-weight: 700;
+}
+#an{
+    position: fixed;
+    top:9.6%;
+    right:25.3%;
+}
+button{
+    display: inline-block;
+    border:solid 0px;
+    outline:none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    color:white;
+    background-color: rgb(223, 156, 50);
+    border-radius: 20px;
+    box-shadow:3px 3px 2px rgb(179, 178, 178);
+}
+button:hover{
+    color:rgb(223, 156, 50);
+    background-color:white;
+}
+textarea{
+    /* background:transparent; */
+    opacity: 0.5;
+    border:1px solid lightgray;
+    box-shadow:5px 5px 5px rgb(148, 148, 148);
+    z-index: -2;
+}
+body{
+    color: #000;
+    background-color:rgb(252, 237, 190);
+    background-size: 100%;
+}
