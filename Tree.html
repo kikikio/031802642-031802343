@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>⭐TREE⭐</title>
+    <link rel="stylesheet" href="css/metroStyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/customcss.css" rel="stylesheet" type="text/css"/>
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/awesome.css" rel="stylesheet" type="text/css"/> -->
+    <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.ztree.all.js"></script>
+    <script type="text/javascript" src="js/set.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#search").hide(); 
+            $("#butt").click(function() {
+                $(".invisable").hide();
+                toLine();//提取每一行进Arr
+                teacherNum();//树的个数
+                if(n>4)
+                    alert("您输入的树超过显示上限,仅显示前四棵树");
+                moveplace();//根据树的个数排版
+                for(var treeCirle=0;treeCirle<treeNum.length-1;treeCirle++ )
+                {
+                    zNodes=[{menuName:"导师" ,open:true}];//开始一棵新树时初始化zNodes
+                    zNodes[0].menuName=(Arr[treeNum[treeCirle]]);//Arr2[0]
+                    zTreeObj=$.fn.zTree.init($("#regionZTree"+treeCirle),setting,zNodes);//初始化zTreeObj
+                    secondLayer(treeNum[treeCirle],treeNum[treeCirle+1]);//xx级xx生
+                    thirdLayer(treeNum[treeCirle],treeNum[treeCirle+1]);//xxx、xxx、xxx
+                    zTreeObj.cancelSelectedNode();
+                    zTreeObj.cancelEditName("tObj"+treeCirle);
+                }   
+                $("#texts").val("");//处理完数据后清除文本框
+            })
+            $("#fdj").click(function(){//搜索功能的显隐
+                $("#search").fadeToggle();
+            })
+            $("#an").click(function(){//搜索导师
+                find();
+            })
+        })
+    </script>
+    <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+    <script>
+        L2Dwidget.init({
+            "model": {
+                jsonPath: "https://unpkg.com/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json",
+                "scale": 1
+            },
+            "display": {
+                "position": "left",
+                "width": 110,
+                "height": 110,
+                "hOffset": 10,
+                "vOffset": 15
+            },
+            "mobile": {
+                "show": true,
+                "scale": 0.5
+            },
+            "react": {
+                "opacityDefault": 1,
+                "opacityOnHover": 0.2
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <!-- 设定最多展示4棵树 -->
+    <div id=treediv1 class="treed">
+        <ul id="regionZTree0" class="ztree"></ul>
+    </div>
+    <div id=treediv2 class="treed">
+        <ul id="regionZTree1" class="ztree"></ul>
+    </div>
+    <div id=treediv3 class="treed">
+        <ul id="regionZTree2" class="ztree"></ul>
+    </div>
+    <div id=treediv4 class="treed">
+        <ul id="regionZTree3" class="ztree"></ul>
+    </div>
+    <div id="kuang"></div>
+    <button id="butt">Creat the tree</button>
+    <textarea id="texts" cols="40" rows="7"
+    placeholder="导师：张三
+2016级博士生：天一、王二、吴五
+2015级硕士生：李四、王五、许六
+2016级硕士生：刘一、李二、李三
+2017级本科生：刘六、琪七、司四
+
+李四：数学建模、华为
+
+刘六：java、阿里
+
+
+导师：王五
+2018级博士生：李波、王博、孙博
+2018级本科生：刘波、赵波、周波
+2016级硕士生：刘一、李二、李三
+2017级本科生：刘六、琪七、司四
+
+李波：数学建模、华为
+
+赵波：java、阿里
+"></textarea>
+    
+    
+    <p><img src="htmlimg/fdj.png" id="fdj"></p>
+    <div id="search">
+        <input type="text" id="stxt" placeholder="请输入名字用于搜索"><br>
+        <span id="result">NONE</span>
+        <button id="an">GO</button>
+    </div>
+    
+    <img src="htmlimg/reload.png" id="shuaxin" onclick="location.reload();">
+</body>
+</html>
